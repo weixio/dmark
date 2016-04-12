@@ -93,4 +93,7 @@ public class testController{
 		}
 		return "test.jsp";
 	}
+	public void run(){
+		
+	}
 }
