@@ -31,7 +31,10 @@
 			${ error.defaultMessage} 
 		</c:forEach>
 	</c:if>
-
+	<br/>
+	<form name="form2" action="" enctype="mulipart/form-data">
+	
+	</form>
 	<script type="text/javascript">
 	$("#btnj").click(function(){
 		$.ajax(
