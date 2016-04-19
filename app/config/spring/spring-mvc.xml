@@ -9,7 +9,7 @@
 
 	<!-- 启用spring mvc 注解 -->
 	<mvc:annotation-driven validator="validator"></mvc:annotation-driven>
-	<!-- 静态请求 交给默认的handler处理 -->
+	<!-- 静态请求 交给默认的handler处理(才能读取js等静态内容) -->
 	<mvc:default-servlet-handler />
 	<!-- 配置视图解析器前缀 -->
 	<bean
@@ -35,4 +35,22 @@
 		<property name="defaultEncoding" value="UTF-8" />
 		<property name="cacheSeconds" value="120" />
 	</bean>
+	<!-- 配置拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+	<!-- 两个**表示全部地址，不止是/ -->
+			<mvc:mapping path="/**" />
+			<bean class="com.mark.interceptor.demoInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	<!-- 文件上传 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置文件最大5M -->
+		<property name="maxUploadSize">
+			<value>5242880</value>
+		</property>
+	</bean>
+	<!-- 全局异常处理 -->
+	<bean class="com.except.CustomExceptionResolver"></bean>
 </beans>
