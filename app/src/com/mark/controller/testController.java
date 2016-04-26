@@ -16,15 +16,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 
 import com.mark.po.UserPo;
-import com.mark.po.markPo;
 import com.mark.service.testService;
 
 @Controller    //将这个类放入容器中
@@ -82,7 +81,9 @@ public class testController{
 	}
 	//@Validated BindingResult br配套出现  ，位置固定
 	@RequestMapping("/dovalidate")
-	public String dovalidate(Model model, @Validated UserPo po,BindingResult br){
+	public String dovalidate(Model model, 
+			@ModelAttribute("model")//指定数据回显的名称 request.setAttribute("model",po)
+		@Validated UserPo po,BindingResult br){
 		if(br.hasErrors()){
 			List<ObjectError> allErrors = br.getAllErrors();
 			for (ObjectError objectError : allErrors) {
