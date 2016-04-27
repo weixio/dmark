@@ -6,6 +6,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
-
-
+	<!-- 使Aspect的注解起作用：自动位匹配的类生成代理对象 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 </beans>

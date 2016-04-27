@@ -44,13 +44,6 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 	<!-- 文件上传 -->
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<!-- 设置文件最大5M -->
-		<property name="maxUploadSize">
-			<value>5242880</value>
-		</property>
-	</bean>
 	<!-- 全局异常处理 -->
 	<bean class="com.except.CustomExceptionResolver"></bean>
 </beans>
