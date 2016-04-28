@@ -21,8 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.aop.AsceptDemo;
-import com.aop.DynamicProxydemo;
 import com.mark.po.UserPo;
 import com.mark.service.testService;
 
@@ -33,19 +31,13 @@ public class testController{
 	
 	@Resource(name="testService")   //从容器中注入service
 	private testService testservice;
-	@Resource
-	private DynamicProxydemo dynamicProxydemo;
-	@Resource
-	private AsceptDemo as;
 
 	@RequestMapping("/init")  //指定跳转地址映射
 	public ModelAndView dotest(HttpServletRequest httpservletrequest,
 			HttpServletResponse httpservletresponse) throws Exception {
 		testservice.doservice();
 		ModelAndView mav = new ModelAndView();
-		int i = dynamicProxydemo.add(1, 2);
-		as.beforeMethod();
-		mav.addObject("ss",i);
+		mav.addObject("ss","ss");
 		mav.setViewName("test.jsp");
 		return mav;
 	}
