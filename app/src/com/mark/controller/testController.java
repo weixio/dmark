@@ -35,9 +35,11 @@ public class testController{
 	@RequestMapping("/init")  //指定跳转地址映射
 	public ModelAndView dotest(HttpServletRequest httpservletrequest,
 			HttpServletResponse httpservletresponse) throws Exception {
+		System.out.println(testservice.getClass().getName());
 		testservice.doservice();
+		UserPo po = testservice.getUserPobyId(1);
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("ss","ss");
+		mav.addObject("ss",po.toString());
 		mav.setViewName("test.jsp");
 		return mav;
 	}
