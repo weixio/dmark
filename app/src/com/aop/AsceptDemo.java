@@ -10,6 +10,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 //把这个类生命为一个切面
@@ -20,6 +21,7 @@ public class AsceptDemo {
 		 * 前置通知：在方法执行之前做的事
 		 * @param jp
 		 */
+		@Order(1) //指定切面优先级
 		@Before("execution(public * com.mark.service.testService.*(..))")
 		public void beforeMethod(JoinPoint jp){
 			String methodName = jp.getSignature().getName();
